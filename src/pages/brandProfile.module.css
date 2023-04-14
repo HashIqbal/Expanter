@@ -1,0 +1,162 @@
+.kk {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  /* border: 3px solid blue; */
+}
+
+.jj {
+  width: 100vw;
+  height: 4rem;
+  border-bottom: 1px solid rgb(192, 192, 192);
+  display: flex;
+  justify-content: space-between;
+  z-index: 0;
+}
+
+.jt {
+  width: 8rem;
+  height: 100%;
+  /* border-right: 1px solid blue; */
+  display: flex;
+  align-items: center;
+  /* position: relative; */
+}
+
+.js {
+  width: 15rem;
+  height: 100%;
+  border-left: 1px solid rgb(192, 192, 192);
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+
+.mil {
+  height: 1.8rem;
+  width: 1.8rem;
+  /* position: relative; */
+  /* z-index: 999; */
+}
+
+.pk {
+  display: none;
+}
+
+.pk:checked ~ label .mil {
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+}
+
+.jil {
+  height: 1.8rem;
+  width: 1.8rem;
+  /* position: absolute; */
+  /* z-index: 9; */
+  position: relative;
+  left: 13.9rem;
+  top: -1rem;
+  z-index: 999;
+  display: none;
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  /* pointer-events: none; */
+  /* transition: 0.2s; */
+}
+
+input[type="checkbox"]:checked ~ label .jil {
+  display: block;
+  /* visibility: visible; */
+  /* opacity: 1; */
+  /* pointer-events: all; */
+}
+
+.hil {
+  position: absolute;
+  height: 100%;
+  width: 15.9rem;
+  border-right: 1px solid gray;
+  z-index: 99;
+  background-color: white;
+  left: -16rem;
+  top: 0;
+  transition: 0.4s ease;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.pk:checked ~ .hil {
+  left: 0;
+}
+
+.exp {
+  height: 5rem;
+  /* border-bottom: 1px solid gray; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1.8rem;
+  color: rgb(90, 62, 253);
+  letter-spacing: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.icon {
+  height: 1.8rem;
+  width: 1.8rem;
+  border: none;
+  color: mediumslateblue;
+  fill: mediumslateblue;
+}
+
+.mc {
+  list-style: none;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.mc li {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 2.3rem;
+  cursor: pointer;
+  height: 1.8rem;
+}
+
+.hh {
+  width: 50%;
+  height: 50%;
+  position: relative;
+  left: 2.3rem;
+}
+
+.mv {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.cc {
+  color: mediumslateblue;
+}
+
+.ct {
+  color: mediumslateblue;
+  font-weight: 600;
+}
+
+.coco:hover {
+  background-color: rgb(201, 192, 253);
+}
+
+.bb {
+  height: 100%;
+  width: 100%;
+  border: 3px solid gray;
+}

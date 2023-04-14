@@ -1,0 +1,130 @@
+.jito {
+  padding: 0.5rem 1rem;
+  color: #fff;
+}
+
+.jito-two {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.box {
+  height: 110vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.go {
+  /* background-color: aquamarine; */
+  background-image: url(../assets/light-blue.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+.line {
+  background-color: lightgreen;
+  width: 3rem;
+  border: 0.5px solid lightgreen;
+  margin-bottom: 2rem;
+}
+
+.pos {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+.jo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.heading-two {
+  color: #fff;
+  font-size: 3rem;
+  line-height: 1.3;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.ul {
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.fo {
+  display: flex;
+  gap: 1.6rem;
+  margin-top: 3rem;
+}
+
+.vito {
+  background-color: #fff;
+  padding: 0.7rem 1.4rem;
+  border-radius: 3.5px;
+  text-decoration: none;
+  color: rgb(94, 210, 249);
+}
+
+.vito-two {
+  background-color: rgb(94, 210, 249);
+  padding: 0.7rem 1.4rem;
+  border-radius: 3.5px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+}
+/* Second vo styling */
+
+.vo {
+  position: relative;
+}
+
+.pos-two {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+.vo {
+  /* background-color: lightblue; */
+  background-image: url(../assets/green.jpg);
+  background-size: cover;
+}
+
+.chito {
+  background-color: rgb(94, 210, 249);
+  padding: 0.7rem 1.4rem;
+  border-radius: 3.5px;
+  text-decoration: none;
+  color: white;
+}
+
+.chito-two {
+  background-color: white;
+  padding: 0.7rem 1.4rem;
+  border-radius: 3.5px;
+  border: 1px solid rgb(94, 210, 249);
+  color: rgb(94, 210, 249);
+  text-decoration: none;
+}
+
+.line-two {
+  background-color: blue;
+  width: 3rem;
+  border: 0.5px solid blue;
+  margin-bottom: 2rem;
+}
+
+.coco {
+  width: 90%;
+}

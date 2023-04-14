@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-image: url(../assets/earth2.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.bar {
+  margin: 0 auto;
+  /* margin-left: 15rem; */
+  width: 1200px;
+}
+
+.it {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+  color: #fff;
+}
+
+.heading {
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: rgb(127, 212, 240);
+  font-size: 3rem;
+}
+
+.para {
+  margin-bottom: 2.8rem;
+  color: white;
+}
+
+.cont-two {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* margin-top: 4rem; */
+  transform: translate(-65%, -50%);
+}
+
+.adjust {
+  width: 80%;
+}
+
+.it-two {
+  display: flex;
+  gap: 1rem;
+  /* text-decoration: none; */
+}
+
+.fro {
+  text-decoration: none;
+  color: #ffffff9c;
+}
+
+.fro:hover {
+  color: white;
+}
+
+.pre {
+  color: black;
+  background-color: white;
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  border-radius: 3.5px;
+}
+
+.pre:hover {
+  background-color: #ffffffcc;
+}
