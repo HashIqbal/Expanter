@@ -42,7 +42,7 @@ const FeaturesPage = () => {
               </div>
             </div>
             <div className={styles.fo}>
-              <Link className={styles.vito} to="/create/product1">
+              <Link className={styles.vito} to="/create/brand">
                 Signup
               </Link>
               <Link className={styles["vito-two"]}>Login</Link>
@@ -78,7 +78,7 @@ const FeaturesPage = () => {
               </div>
             </div>
             <div className={styles.fo}>
-              <Link className={styles.chito} to="/create/product2">
+              <Link className={styles.chito} to="/create/services">
                 Signup
               </Link>
               <Link className={styles["chito-two"]}>Login</Link>

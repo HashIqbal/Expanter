@@ -136,6 +136,12 @@ input[type="radio"]:checked + .nl-two:before {
   flex-direction: column;
 }
 
+.cli {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .jiti-two {
   margin-top: 1rem;
   display: flex;
@@ -146,7 +152,7 @@ input[type="radio"]:checked + .nl-two:before {
 .koko {
   /* height: 4rem; */
   width: 18rem;
-  height: 3rem;
+  height: 1.5rem;
   font-size: 1.5rem;
   /* margin-top: 2rem; */
 }
@@ -170,6 +176,10 @@ input[type="radio"]:checked + .nl-two:before {
   color: #fff;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.cc {
+  background-color: red;
 }
 
 .lp {

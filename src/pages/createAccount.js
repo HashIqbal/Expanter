@@ -9,6 +9,9 @@ const CreateAccount = () => {
   const inputData2 = useRef();
   const inputData3 = useRef();
   const inputData4 = useRef();
+  const inputData5 = useRef();
+  const inputData6 = useRef();
+  const inputData7 = useRef();
   // const [PasswordInputType, ToggleIcon] = UsePasswordToggle();
 
   // console.log(PasswordInputType, ToggleIcon);
@@ -22,11 +25,14 @@ const CreateAccount = () => {
   const [msg, setMsg] = useState();
   const [ag, setAg] = useState(false);
   const [jj, setJj] = useState(false);
-  const [rdo, setRdo] = useState();
-  const [fi, setFi] = useState();
-  const [bl, setBl] = useState();
+  // const [rdo, setRdo] = useState();
+  // const [fi, setFi] = useState();
+  // const [bl, setBl] = useState();
   const [ol, setOl] = useState(false);
   const [bz, setBz] = useState(false);
+  const [oo, setOo] = useState(false);
+  const [zz, setZz] = useState(false);
+  const [pp, setPp] = useState(false);
   // const [ju, setJu] = useState(false);
   const params = useParams();
 
@@ -37,7 +43,7 @@ const CreateAccount = () => {
   // const numbers = /[0-9]/g;
 
   useEffect(() => {
-    if (params.id === "product1") {
+    if (params.id === "brand") {
       setPs(true);
       setOl(true);
     } else {
@@ -79,6 +85,37 @@ const CreateAccount = () => {
   const sumtHandler = (e) => {
     e.preventDefault();
     // console.log(inputData1.current.value);
+
+    if (
+      inputData5.current.value.includes("_") ||
+      inputData5.current.value.includes("-") ||
+      inputData5.current.value.length < 1
+    ) {
+      setOo(true);
+    } else {
+      setOo(false);
+    }
+
+    if (
+      inputData6.current.value.includes("_") ||
+      inputData6.current.value.includes("-") ||
+      inputData6.current.value.length < 1
+    ) {
+      setZz(true);
+    } else {
+      setZz(false);
+    }
+
+    if (
+      inputData7.current.value.includes("_") ||
+      inputData7.current.value.includes("-") ||
+      inputData7.current.value.length < 1
+    ) {
+      setPp(true);
+    } else {
+      setPp(false);
+    }
+
     if (
       !inputData1.current.value.includes("@") &&
       !inputData1.current.value.includes(".com")
@@ -111,26 +148,26 @@ const CreateAccount = () => {
     //   setFi(false);
     // }
 
-    if (ol) {
-      if (inputData3.current.value > 150 || inputData3.current.value < 1) {
-        console.log("age");
-        setAg(true);
-      } else {
-        setAg(false);
-      }
-    }
+    // if (ol) {
+    //   if (inputData3.current.value > 150 || inputData3.current.value < 1) {
+    //     console.log("age");
+    //     setAg(true);
+    //   } else {
+    //     setAg(false);
+    //   }
+    // }
 
-    if (bz) {
-      if (
-        inputData4.current.value.length < 1 ||
-        inputData4.current.value.length > 20
-      ) {
-        console.log("joy");
-        setJj(true);
-      } else {
-        setJj(false);
-      }
-    }
+    // if (bz) {
+    //   if (
+    //     inputData4.current.value.length < 1 ||
+    //     inputData4.current.value.length > 20
+    //   ) {
+    //     console.log("joy");
+    //     setJj(true);
+    //   } else {
+    //     setJj(false);
+    //   }
+    // }
     // console.log(inputData4);
 
     // if (
@@ -199,7 +236,7 @@ const CreateAccount = () => {
                       type="radio"
                       name="uni"
                       id="Brand"
-                      checked={params.id === "product1" ? ri : null}
+                      checked={params.id === "brand" ? ri : null}
                       // checked="checked"
                       onClick={onHil}
                       value="Brand"
@@ -215,7 +252,7 @@ const CreateAccount = () => {
                       type="radio"
                       name="uni"
                       id="Service provider"
-                      checked={params.id === "product2" ? pl : null}
+                      checked={params.id === "services" ? pl : null}
                       onClick={onBil}
                       value="Service provider"
                       onChange={chkdHandler}
@@ -225,23 +262,44 @@ const CreateAccount = () => {
                     </label>
                   </div>
                 </div>
-                {fi && (
+                {/* {fi && (
                   <p className={`${styles.hh} ${styles.mp}`}>
                     Please select a value
                   </p>
-                )}
+                )} */}
               </div>
               <div className={styles.jiti}>
+                <label>First Name</label>
+                <input
+                  ref={inputData5}
+                  className={`${styles.koko} ${oo ? styles.cc : ""}`}
+                />
+                {oo && <p className={styles.hh}>Please enter correct Name</p>}
+              </div>
+              <div className={styles.cli}>
+                <label>Last Name</label>
+                <input
+                  ref={inputData6}
+                  className={`${styles.koko} ${zz ? styles.cc : ""}`}
+                />
+                {zz && (
+                  <p className={styles.hh}>Please enter correct last-Name</p>
+                )}
+              </div>
+              <div className={styles.cli}>
                 <label>Email address</label>
-                <input ref={inputData1} className={styles.koko} />
+                <input
+                  ref={inputData1}
+                  className={`${styles.koko} ${ul ? styles.cc : ""}`}
+                />
                 {ul && <p className={styles.hh}>Please enter correct E-mail</p>}
               </div>
               <div className={styles["jiti-two"]}>
                 <label>Password</label>
                 <div>
                   <input
-                    className={styles.koko}
-                    type={ku ? "password" : "text"}
+                    className={`${styles.koko} ${msg ? styles.cc : ""}`}
+                    type={ku ? "text" : "password"}
                     ref={inputData2}
                   />
                   {/* <FontAwesomeIcon icon={"eye"} /> */}
@@ -281,32 +339,46 @@ const CreateAccount = () => {
                   <p className={styles.hh}>Please enter correct password</p>
                 )}
               </div>
-              {ps && (
+
+              <div className={styles.cli}>
+                <label>Business Name</label>
+                <input
+                  ref={inputData7}
+                  className={`${styles.koko} ${pp ? styles.cc : ""}`}
+                />
+                {pp && (
+                  <p className={styles.hh}>
+                    Please enter correct Business-Name
+                  </p>
+                )}
+              </div>
+
+              {/* {ps && (
                 <div className={styles.mn}>
                   <label>Age</label>
                   <input
                     ref={inputData3}
                     type="number"
-                    className={styles.koko}
+                    className={`${styles.koko} ${ag && ps ? styles.cc : ""}`}
                   />
                 </div>
               )}
               {ag && ps && (
                 <p className={styles.hh}> Please enter age less than 150</p>
-              )}
-              {!ps && (
+              )} */}
+              {/* {!ps && (
                 <div className={styles.mn}>
                   <label>First Name</label>
                   <input
                     ref={inputData4}
                     // onChange={chgHandler}
-                    className={styles.koko}
+                    className={`${styles.koko} ${jj && !ps ? styles.cc : ""}`}
                   />
                 </div>
               )}
               {jj && !ps && (
                 <p className={styles.hh}>Please enter correct name</p>
-              )}
+              )} */}
               <button type="submit" className={styles.ln}>
                 Create account now
               </button>
