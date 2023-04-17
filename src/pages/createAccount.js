@@ -25,22 +25,13 @@ const CreateAccount = () => {
   const [msg, setMsg] = useState();
   const [ag, setAg] = useState(false);
   const [jj, setJj] = useState(false);
-  // const [rdo, setRdo] = useState();
-  // const [fi, setFi] = useState();
-  // const [bl, setBl] = useState();
+
   const [ol, setOl] = useState(false);
   const [bz, setBz] = useState(false);
   const [oo, setOo] = useState(false);
   const [zz, setZz] = useState(false);
   const [pp, setPp] = useState(false);
-  // const [ju, setJu] = useState(false);
   const params = useParams();
-
-  // console.log(show);
-
-  // const lowerCase = /[a-z]/g;
-  // const upperCase = /[A-Z]/g;
-  // const numbers = /[0-9]/g;
 
   useEffect(() => {
     if (params.id === "brand") {
@@ -56,20 +47,17 @@ const CreateAccount = () => {
     setPs(true);
     setOl(true);
     setBz(false);
-    // setJu(false);
     setRi(true);
     setPl(false);
-    // setBl(true);
   };
 
   const onBil = () => {
     setPs(false);
     setBz(true);
     setOl(false);
-    // setJu(true);
+
     setRi(false);
     setPl(true);
-    // setBl(false);
   };
 
   const onEy = () => {
@@ -84,7 +72,6 @@ const CreateAccount = () => {
 
   const sumtHandler = (e) => {
     e.preventDefault();
-    // console.log(inputData1.current.value);
 
     if (
       inputData5.current.value.includes("_") ||
@@ -128,73 +115,12 @@ const CreateAccount = () => {
 
     const regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
 
-    if (
-      // !lowerCase.test(inputData2.current.value) &&
-      // !upperCase.test(inputData2.current.value) &&
-      // !numbers.test(inputData2.current.value) &&
-      !regExp.test(inputData2.current.value)
-      // inputData2.current.value.length >= 9
-    ) {
+    if (!regExp.test(inputData2.current.value)) {
       console.log("hey");
       setMsg(true);
     } else {
       setMsg(false);
     }
-
-    // if (rdo !== "Brand" && rdo !== "Service provider") {
-    //   console.log("yellow");
-    //   setFi(true);
-    // } else {
-    //   setFi(false);
-    // }
-
-    // if (ol) {
-    //   if (inputData3.current.value > 150 || inputData3.current.value < 1) {
-    //     console.log("age");
-    //     setAg(true);
-    //   } else {
-    //     setAg(false);
-    //   }
-    // }
-
-    // if (bz) {
-    //   if (
-    //     inputData4.current.value.length < 1 ||
-    //     inputData4.current.value.length > 20
-    //   ) {
-    //     console.log("joy");
-    //     setJj(true);
-    //   } else {
-    //     setJj(false);
-    //   }
-    // }
-    // console.log(inputData4);
-
-    // if (
-    //   inputData4.current.value.length < 1 ||
-    //   inputData4.current.value.length > 20
-    // ) {
-    //   console.log("joy");
-    //   setJj(true);
-    // }
-
-    // console.log(inputData3);
-  };
-
-  // const chgHandler = (e) => {
-  //   if (
-  //     inputData4.current.value.length < 1 ||
-  //     inputData4.current.value.length > 20
-  //   ) {
-  //     console.log("joy");
-  //     setJj(true);
-  //   } else {
-  //     setJj(false);
-  //   }
-  // };
-
-  const chkdHandler = (e) => {
-    console.log(e.target.checked);
   };
 
   return (
@@ -255,18 +181,12 @@ const CreateAccount = () => {
                       checked={params.id === "services" ? pl : null}
                       onClick={onBil}
                       value="Service provider"
-                      onChange={chkdHandler}
                     />
                     <label className={styles["nl-two"]} for="Service provider">
                       Service provider
                     </label>
                   </div>
                 </div>
-                {/* {fi && (
-                  <p className={`${styles.hh} ${styles.mp}`}>
-                    Please select a value
-                  </p>
-                )} */}
               </div>
               <div className={styles.jiti}>
                 <label>First Name</label>
@@ -353,32 +273,6 @@ const CreateAccount = () => {
                 )}
               </div>
 
-              {/* {ps && (
-                <div className={styles.mn}>
-                  <label>Age</label>
-                  <input
-                    ref={inputData3}
-                    type="number"
-                    className={`${styles.koko} ${ag && ps ? styles.cc : ""}`}
-                  />
-                </div>
-              )}
-              {ag && ps && (
-                <p className={styles.hh}> Please enter age less than 150</p>
-              )} */}
-              {/* {!ps && (
-                <div className={styles.mn}>
-                  <label>First Name</label>
-                  <input
-                    ref={inputData4}
-                    // onChange={chgHandler}
-                    className={`${styles.koko} ${jj && !ps ? styles.cc : ""}`}
-                  />
-                </div>
-              )}
-              {jj && !ps && (
-                <p className={styles.hh}>Please enter correct name</p>
-              )} */}
               <button type="submit" className={styles.ln}>
                 Create account now
               </button>
