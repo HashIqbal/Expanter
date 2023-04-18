@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./intro.module.css";
+import styles from "./start.module.css";
 
-const IntroPage = () => {
+const Start = () => {
   return (
     <React.Fragment>
       <header className={styles.container}>
@@ -35,4 +35,4 @@ const IntroPage = () => {
   );
 };
 
-export default IntroPage;
+export default Start;

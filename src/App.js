@@ -1,16 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import IntroPage from "./pages/intro";
-import FeaturesPage from "./pages/features";
-import CreateAccount from "./pages/createAccount";
-import BussInfo from "./pages/bussInfo";
-import LoginPage from "./pages/loginPage";
-import ServiceProvider from "./pages/serviceProvider";
-import BrandProfile from "./pages/brandProfile";
+import Start from "./pages/home/start";
+import FeaturesPage from "./pages/home/features";
+import CreateAccount from "./pages/forms/createAccount";
+import BussInfo from "./pages/profileFill/bussInfo";
+import Login from "./pages/forms/login";
+import ServiceProvider from "./pages/profileFill/serviceProvider";
+import BrandProfile from "./pages/profileView/brandProfile";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <IntroPage />,
+    element: <Start />,
   },
   {
     path: "/features",
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/loginPage",
-    element: <LoginPage />,
+    element: <Login />,
   },
   {
     path: "/serviceProvider",

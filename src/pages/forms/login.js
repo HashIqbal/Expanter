@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import styles from "./loginPage.module.css";
+import styles from "./login.module.css";
 import { Link } from "react-router-dom";
-import UsePasswordToggle from "../customHooks.js/usePasswordToggle";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const LoginPage = () => {
-  const [PasswordInputType, ToggleIcon] = UsePasswordToggle();
+// import UsePasswordToggle from "../customHooks/usePasswordToggle";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+const Login = () => {
+  // const [PasswordInputType, ToggleIcon] = UsePasswordToggle();
 
-  console.log(PasswordInputType, ToggleIcon);
+  // console.log(PasswordInputType, ToggleIcon);
 
   const [show, setShow] = useState(true);
 
@@ -102,4 +102,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

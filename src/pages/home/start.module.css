@@ -5,7 +5,7 @@
 }
 
 .container {
-  background-image: url(../assets/earth2.jpg);
+  background-image: url(../../assets/images/earth2.jpg);
   background-size: cover;
   height: 100vh;
   width: 100vw;
