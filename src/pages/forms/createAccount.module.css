@@ -12,13 +12,11 @@
 }
 
 .signup-container-one {
-  /* background-color: pink; */
   background-image: url(../../assets/images/water.jpg);
   background-size: cover;
 }
 
 .signup-container-two {
-  /* background-color: aqua; */
   height: 100vh;
   position: relative;
 }
@@ -31,7 +29,6 @@
 .icon-box {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .heading-primary {
@@ -56,8 +53,6 @@ input[type="radio"] {
   border: 2px solid rgb(238, 238, 238);
   border-radius: 20px;
   padding: 0.8rem 1.6rem;
-  /* display: flex; */
-  /* flex-direction: row; */
   position: relative;
   width: 9rem;
 }
@@ -83,7 +78,6 @@ input[type="radio"]:checked + .form-label-one:before {
   width: 0.5rem;
   border: 5px solid purple;
   background-color: white;
-  /* margin-right: 0.2rem; */
 }
 
 .form-label-two {
@@ -92,8 +86,6 @@ input[type="radio"]:checked + .form-label-one:before {
   border: 2px solid rgb(238, 238, 238);
   border-radius: 20px;
   padding: 0.8rem 1.6rem;
-  /* display: flex; */
-  /* flex-direction: row; */
   position: relative;
   width: 6rem;
 }
@@ -134,31 +126,16 @@ input[type="radio"]:checked + .form-label-two:before {
   margin-bottom: 3rem;
 }
 
-/* .jiti {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-} */
-
 .input-group {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-.jiti-two {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  /* position: relative; */
-}
-
 .input-box {
-  /* height: 4rem; */
   width: 18rem;
   height: 1.5rem;
   font-size: 1.5rem;
-  /* margin-top: 2rem; */
 }
 
 .password-toggle-icon {
@@ -228,22 +205,12 @@ input[type="radio"]:checked + .form-label-two:before {
   text-decoration: none;
 }
 
-.eye-icon {
-  height: 1rem;
-  width: 1rem;
-  position: relative;
-  right: 1.5rem;
-}
-
+.eye-icon,
 .eye-icon-cross {
   height: 1rem;
   width: 1rem;
   position: relative;
   right: 1.5rem;
-}
-
-.error-message {
-  color: red;
 }
 
 .text-indicator {

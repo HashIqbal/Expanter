@@ -3,50 +3,31 @@ import styles from "./createAccount.module.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 const CreateAccount = () => {
-  const [showEye, setShowEye] = useState(true);
   const [showPass, setShowPass] = useState(true);
-  const [radioMarked, setRadioMarked] = useState(false);
-  const [randomVal1, setRandomVal1] = useState(true);
-  const [randomVal2, setRandomVal2] = useState(true);
-  const [showFirstName, setShowFirstName] = useState(false);
-  const [showLastName, setShowLastName] = useState(false);
-  const [showBusinessName, setShowBusinessName] = useState(false);
-  const [showEmail, setShowEmail] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-
+  const [radioMarked, setRadioMarked] = useState();
   const params = useParams();
 
   useEffect(() => {
     if (params.id === "brand") {
-      setRadioMarked(true);
-      // setOl(true);
+      setRadioMarked("brand");
     } else {
-      setRadioMarked(false);
-      // setBz(true);
+      setRadioMarked("Service provider");
     }
   }, []);
 
   const onBrandCheckHandler = () => {
-    setRadioMarked(true);
-
-    setRandomVal1(true);
-    setRandomVal2(false);
+    setRadioMarked("brand");
   };
 
   const onServiceCheckHandler = () => {
-    setRadioMarked(false);
-
-    setRandomVal1(false);
-    setRandomVal2(true);
+    setRadioMarked("Service provider");
   };
 
   const onChangePassHandler1 = () => {
-    setShowEye(false);
     setShowPass(false);
   };
 
   const onChangePassHandler2 = () => {
-    setShowEye(true);
     setShowPass(true);
   };
 
@@ -64,7 +45,6 @@ const CreateAccount = () => {
     console.log(e.target.value);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    console.log(formValues);
   };
 
   const submitHandler = (e) => {
@@ -81,9 +61,9 @@ const CreateAccount = () => {
       values.firstName.includes("_")
     ) {
       errors.firstName = "Please enter correct firstName";
-      setShowFirstName(true);
+      errors.firstNameIndicator = true;
     } else {
-      setShowFirstName(false);
+      errors.firstNameIndicator = false;
     }
     if (
       !values.lastName ||
@@ -91,9 +71,9 @@ const CreateAccount = () => {
       values.lastName.includes("_")
     ) {
       errors.lastName = "Please enter correct lastName";
-      setShowLastName(true);
+      errors.lastNameIndicator = true;
     } else {
-      setShowLastName(false);
+      errors.lastNameIndicator = false;
     }
     if (
       !values.businessName ||
@@ -101,15 +81,15 @@ const CreateAccount = () => {
       values.businessName.includes("_")
     ) {
       errors.businessName = "Please enter correct businessName";
-      setShowBusinessName(true);
+      errors.businessNameIndicator = true;
     } else {
-      setShowBusinessName(false);
+      errors.businessNameIndicator = false;
     }
     if (!regExp.test(values.password)) {
       errors.password = "Please enter correct password";
-      setShowPassword(true);
+      errors.passwordIndicator = true;
     } else {
-      setShowPassword(false);
+      errors.passwordIndicator = false;
     }
     if (
       !values.email ||
@@ -117,9 +97,9 @@ const CreateAccount = () => {
       !values.email.includes(".com")
     ) {
       errors.email = "Please enter correct email";
-      setShowEmail(true);
+      errors.emailIndicator = true;
     } else {
-      setShowEmail(false);
+      errors.emailIndicator = false;
     }
 
     return errors;
@@ -164,9 +144,9 @@ const CreateAccount = () => {
                       type="radio"
                       name="uni"
                       id="Brand"
-                      checked={radioMarked ? randomVal1 : null}
-                      onClick={onBrandCheckHandler}
+                      checked={radioMarked === "brand"}
                       value="Brand"
+                      onChange={onBrandCheckHandler}
                     />
                     <label className={styles["form-label-one"]} for="Brand">
                       Brand
@@ -177,9 +157,9 @@ const CreateAccount = () => {
                       type="radio"
                       name="uni"
                       id="Service provider"
-                      checked={!radioMarked ? randomVal2 : null}
-                      onClick={onServiceCheckHandler}
+                      checked={radioMarked === "Service provider"}
                       value="Service provider"
+                      onChange={onServiceCheckHandler}
                     />
                     <label
                       className={styles["form-label-two"]}
@@ -197,7 +177,9 @@ const CreateAccount = () => {
                   name="firstName"
                   value={formValues.firstName}
                   className={`${styles["input-box"]} ${
-                    showFirstName ? styles["input-indicator"] : ""
+                    formErrors.firstNameIndicator
+                      ? styles["input-indicator"]
+                      : ""
                   } `}
                   onChange={onChangeHandler}
                 />
@@ -209,7 +191,9 @@ const CreateAccount = () => {
                   type="text"
                   name="lastName"
                   className={`${styles["input-box"]} ${
-                    showLastName ? styles["input-indicator"] : ""
+                    formErrors.lastNameIndicator
+                      ? styles["input-indicator"]
+                      : ""
                   }`}
                   onChange={onChangeHandler}
                 />
@@ -221,7 +205,7 @@ const CreateAccount = () => {
                   type="text"
                   name="email"
                   className={`${styles["input-box"]} ${
-                    showEmail ? styles["input-indicator"] : ""
+                    formErrors.emailIndicator ? styles["input-indicator"] : ""
                   }`}
                   onChange={onChangeHandler}
                 />
@@ -233,13 +217,15 @@ const CreateAccount = () => {
                   <input
                     name="password"
                     className={`${styles["input-box"]} ${
-                      showPassword ? styles["input-indicator"] : ""
+                      formErrors.passwordIndicator
+                        ? styles["input-indicator"]
+                        : ""
                     }`}
                     type={showPass ? "text" : "password"}
                     onChange={onChangeHandler}
                   />
 
-                  {showEye ? (
+                  {showPass ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -280,7 +266,9 @@ const CreateAccount = () => {
                   type="text"
                   name="businessName"
                   className={`${styles["input-box"]} ${
-                    showBusinessName ? styles["input-indicator"] : ""
+                    formErrors.businessNameIndicator
+                      ? styles["input-indicator"]
+                      : ""
                   } `}
                   onChange={onChangeHandler}
                 />
