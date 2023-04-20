@@ -187,7 +187,6 @@ input[type="radio"]:checked + .form-label-two:before {
 }
 
 .form-container {
-  /* height: 100vh; */
   width: 80%;
   position: absolute;
   top: 60%;
@@ -197,8 +196,6 @@ input[type="radio"]:checked + .form-label-two:before {
 
 .radio-text {
   margin-bottom: 1.9rem;
-  /* top: 2rem; */
-  /* left: 2rem; */
 }
 
 .lnk {
@@ -208,10 +205,6 @@ input[type="radio"]:checked + .form-label-two:before {
 }
 
 .horizontal-line {
-  /* color: black; */
-  /* width: 3rem; */
-  /* height: 8rem; */
-  /* background-color: black; */
   margin-top: 47rem;
 }
 
@@ -249,16 +242,10 @@ input[type="radio"]:checked + .form-label-two:before {
   right: 1.5rem;
 }
 
-.mn {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
 .error-message {
   color: red;
 }
 
-.mp {
-  margin-top: 2rem;
+.text-indicator {
+  color: red;
 }

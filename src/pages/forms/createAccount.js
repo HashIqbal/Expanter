@@ -1,36 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./createAccount.module.css";
 import { Link } from "react-router-dom";
-// import UsePasswordToggle from "../customHooks/usePasswordToggle";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams } from "react-router-dom";
 const CreateAccount = () => {
-  const inputData1 = useRef();
-  const inputData2 = useRef();
-  // const inputData3 = useRef();
-  // const inputData4 = useRef();
-  const inputData5 = useRef();
-  const inputData6 = useRef();
-  const inputData7 = useRef();
-  // const [PasswordInputType, ToggleIcon] = UsePasswordToggle();
-
-  // console.log(PasswordInputType, ToggleIcon);
-
   const [showEye, setShowEye] = useState(true);
   const [showPass, setShowPass] = useState(true);
   const [radioMarked, setRadioMarked] = useState(false);
   const [randomVal1, setRandomVal1] = useState(true);
   const [randomVal2, setRandomVal2] = useState(true);
-  const [emailVal, setEmailVal] = useState(false);
-  const [passVal, setPassVal] = useState();
-  // const [ag, setAg] = useState(false);
-  // const [jj, setJj] = useState(false);
+  const [showFirstName, setShowFirstName] = useState(false);
+  const [showLastName, setShowLastName] = useState(false);
+  const [showBusinessName, setShowBusinessName] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  // const [ol, setOl] = useState(false);
-  // const [bz, setBz] = useState(false);
-  const [firstNameVal, setFirstNameVal] = useState(false);
-  const [lastNameVal, setLastNameVal] = useState(false);
-  const [bussNameVal, setBussNameVal] = useState(false);
   const params = useParams();
 
   useEffect(() => {
@@ -43,84 +26,103 @@ const CreateAccount = () => {
     }
   }, []);
 
-  const onHil = () => {
+  const onBrandCheckHandler = () => {
     setRadioMarked(true);
-    // setOl(true);
-    // setBz(false);
+
     setRandomVal1(true);
     setRandomVal2(false);
   };
 
-  const onBil = () => {
+  const onServiceCheckHandler = () => {
     setRadioMarked(false);
-    // setBz(true);
-    // setOl(false);
 
     setRandomVal1(false);
     setRandomVal2(true);
   };
 
-  const onEy = () => {
+  const onChangePassHandler1 = () => {
     setShowEye(false);
     setShowPass(false);
   };
 
-  const onFy = () => {
+  const onChangePassHandler2 = () => {
     setShowEye(true);
     setShowPass(true);
   };
 
-  const sumtHandler = (e) => {
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    businessName: "",
+  };
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+
+  const onChangeHandler = (e) => {
+    console.log(e.target.value);
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+    console.log(formValues);
+  };
+
+  const submitHandler = (e) => {
     e.preventDefault();
+    setFormErrors(validate(formValues));
+  };
 
-    if (
-      inputData5.current.value.includes("_") ||
-      inputData5.current.value.includes("-") ||
-      inputData5.current.value.length < 1
-    ) {
-      setFirstNameVal(true);
-    } else {
-      setFirstNameVal(false);
-    }
-
-    if (
-      inputData6.current.value.includes("_") ||
-      inputData6.current.value.includes("-") ||
-      inputData6.current.value.length < 1
-    ) {
-      setLastNameVal(true);
-    } else {
-      setLastNameVal(false);
-    }
-
-    if (
-      inputData7.current.value.includes("_") ||
-      inputData7.current.value.includes("-") ||
-      inputData7.current.value.length < 1
-    ) {
-      setBussNameVal(true);
-    } else {
-      setBussNameVal(false);
-    }
-
-    if (
-      !inputData1.current.value.includes("@") &&
-      !inputData1.current.value.includes(".com")
-    ) {
-      setEmailVal(true);
-      // console.log("jo");
-    } else {
-      setEmailVal(false);
-    }
-
+  const validate = (values) => {
+    const errors = {};
     const regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
-
-    if (!regExp.test(inputData2.current.value)) {
-      console.log("hey");
-      setPassVal(true);
+    if (
+      !values.firstName ||
+      values.firstName.includes("-") ||
+      values.firstName.includes("_")
+    ) {
+      errors.firstName = "Please enter correct firstName";
+      setShowFirstName(true);
     } else {
-      setPassVal(false);
+      setShowFirstName(false);
     }
+    if (
+      !values.lastName ||
+      values.lastName.includes("-") ||
+      values.lastName.includes("_")
+    ) {
+      errors.lastName = "Please enter correct lastName";
+      setShowLastName(true);
+    } else {
+      setShowLastName(false);
+    }
+    if (
+      !values.businessName ||
+      values.businessName.includes("-") ||
+      values.businessName.includes("_")
+    ) {
+      errors.businessName = "Please enter correct businessName";
+      setShowBusinessName(true);
+    } else {
+      setShowBusinessName(false);
+    }
+    if (!regExp.test(values.password)) {
+      errors.password = "Please enter correct password";
+      setShowPassword(true);
+    } else {
+      setShowPassword(false);
+    }
+    if (
+      !values.email ||
+      !values.email.includes("@") ||
+      !values.email.includes(".com")
+    ) {
+      errors.email = "Please enter correct email";
+      setShowEmail(true);
+    } else {
+      setShowEmail(false);
+    }
+
+    return errors;
   };
 
   return (
@@ -152,7 +154,7 @@ const CreateAccount = () => {
           </div>
           <div className={styles["form-container"]}>
             <p className={styles["heading-primary"]}>Create an account</p>
-            <form onSubmit={sumtHandler}>
+            <form onSubmit={submitHandler}>
               <p className={styles["form-text"]}>Fill out the form</p>
               <div className={styles["radio-container"]}>
                 <p className={styles["radio-text"]}>I'm signing up as</p>
@@ -163,11 +165,8 @@ const CreateAccount = () => {
                       name="uni"
                       id="Brand"
                       checked={radioMarked ? randomVal1 : null}
-                      // checked="checked"
-                      onClick={onHil}
+                      onClick={onBrandCheckHandler}
                       value="Brand"
-                      // onChange={(e) => setRdo(e.target.value)}
-                      // ref={inputData1}
                     />
                     <label className={styles["form-label-one"]} for="Brand">
                       Brand
@@ -179,7 +178,7 @@ const CreateAccount = () => {
                       name="uni"
                       id="Service provider"
                       checked={!radioMarked ? randomVal2 : null}
-                      onClick={onBil}
+                      onClick={onServiceCheckHandler}
                       value="Service provider"
                     />
                     <label
@@ -194,63 +193,59 @@ const CreateAccount = () => {
               <div className={styles["input-group"]}>
                 <label>First Name</label>
                 <input
-                  ref={inputData5}
+                  type="text"
+                  name="firstName"
+                  value={formValues.firstName}
                   className={`${styles["input-box"]} ${
-                    firstNameVal ? styles["input-indicator"] : ""
-                  }`}
+                    showFirstName ? styles["input-indicator"] : ""
+                  } `}
+                  onChange={onChangeHandler}
                 />
-                {firstNameVal && (
-                  <p className={styles["error-message"]}>
-                    Please enter correct Name
-                  </p>
-                )}
               </div>
+              <p className={styles["text-indicator"]}>{formErrors.firstName}</p>
               <div className={styles["input-group"]}>
                 <label>Last Name</label>
                 <input
-                  ref={inputData6}
+                  type="text"
+                  name="lastName"
                   className={`${styles["input-box"]} ${
-                    lastNameVal ? styles["input-indicator"] : ""
+                    showLastName ? styles["input-indicator"] : ""
                   }`}
+                  onChange={onChangeHandler}
                 />
-                {lastNameVal && (
-                  <p className={styles["error-message"]}>
-                    Please enter correct last-Name
-                  </p>
-                )}
               </div>
+              <p className={styles["text-indicator"]}>{formErrors.lastName}</p>
               <div className={styles["input-group"]}>
                 <label>Email address</label>
                 <input
-                  ref={inputData1}
+                  type="text"
+                  name="email"
                   className={`${styles["input-box"]} ${
-                    emailVal ? styles["input-indicator"] : ""
+                    showEmail ? styles["input-indicator"] : ""
                   }`}
+                  onChange={onChangeHandler}
                 />
-                {emailVal && (
-                  <p className={styles["error-message"]}>
-                    Please enter correct E-mail
-                  </p>
-                )}
               </div>
+              <p className={styles["text-indicator"]}>{formErrors.email}</p>
               <div className={styles["input-group"]}>
                 <label>Password</label>
                 <div>
                   <input
+                    name="password"
                     className={`${styles["input-box"]} ${
-                      passVal ? styles["input-indicator"] : ""
+                      showPassword ? styles["input-indicator"] : ""
                     }`}
                     type={showPass ? "text" : "password"}
-                    ref={inputData2}
+                    onChange={onChangeHandler}
                   />
-                  {/* <FontAwesomeIcon icon={"eye"} /> */}
+
                   {showEye ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       className={styles["eye-icon"]}
-                      onClick={onEy}
+                      onClick={onChangePassHandler1}
                     >
                       <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
                       <path
@@ -265,7 +260,7 @@ const CreateAccount = () => {
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       className={styles["eye-icon-cross"]}
-                      onClick={onFy}
+                      onClick={onChangePassHandler2}
                     >
                       <path
                         fill-rule="evenodd"
@@ -276,27 +271,23 @@ const CreateAccount = () => {
                     </svg>
                   )}
                 </div>
-                {passVal && (
-                  <p className={styles["error-message"]}>
-                    Please enter correct password
-                  </p>
-                )}
               </div>
+              <p className={styles["text-indicator"]}>{formErrors.password}</p>
 
               <div className={styles["input-group"]}>
                 <label>Business Name</label>
                 <input
-                  ref={inputData7}
+                  type="text"
+                  name="businessName"
                   className={`${styles["input-box"]} ${
-                    bussNameVal ? styles["input-indicator"] : ""
-                  }`}
+                    showBusinessName ? styles["input-indicator"] : ""
+                  } `}
+                  onChange={onChangeHandler}
                 />
-                {bussNameVal && (
-                  <p className={styles["error-message"]}>
-                    Please enter correct Business-Name
-                  </p>
-                )}
               </div>
+              <p className={styles["text-indicator"]}>
+                {formErrors.businessName}
+              </p>
 
               <button type="submit" className={styles["btn-one"]}>
                 Create account now

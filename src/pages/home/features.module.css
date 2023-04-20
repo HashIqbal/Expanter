@@ -16,21 +16,20 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.features-container-one {
-  /* background-color: aquamarine; */
+.features-container-brand {
   background-image: url(../../assets/images/light-blue.jpg);
   background-size: cover;
   position: relative;
 }
 
-.line-small-one {
+.line-small-brand {
   background-color: lightgreen;
   width: 3rem;
   border: 0.5px solid lightgreen;
   margin-bottom: 2rem;
 }
 
-.main-body-one {
+.main-body-brand {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -65,7 +64,7 @@
   margin-top: 3rem;
 }
 
-.link-tag-two {
+.link-tag-signup {
   background-color: #fff;
   padding: 0.7rem 1.4rem;
   border-radius: 3.5px;
@@ -73,7 +72,7 @@
   color: rgb(94, 210, 249);
 }
 
-.link-tag-three {
+.link-tag-login {
   background-color: rgb(94, 210, 249);
   padding: 0.7rem 1.4rem;
   border-radius: 3.5px;
@@ -81,13 +80,12 @@
   color: white;
   text-decoration: none;
 }
-/* Second vo styling */
 
-.features-container-two {
+.features-container-services {
   position: relative;
 }
 
-.main-body-two {
+.main-body-services {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,30 +93,12 @@
   width: 70%;
 }
 
-.features-container-two {
-  /* background-color: lightblue; */
+.features-container-services {
   background-image: url(../../assets/images/green.jpg);
   background-size: cover;
 }
 
-.chito {
-  background-color: rgb(94, 210, 249);
-  padding: 0.7rem 1.4rem;
-  border-radius: 3.5px;
-  text-decoration: none;
-  color: white;
-}
-
-.chito-two {
-  background-color: white;
-  padding: 0.7rem 1.4rem;
-  border-radius: 3.5px;
-  border: 1px solid rgb(94, 210, 249);
-  color: rgb(94, 210, 249);
-  text-decoration: none;
-}
-
-.line-small-two {
+.line-small-services {
   background-color: blue;
   width: 3rem;
   border: 0.5px solid blue;

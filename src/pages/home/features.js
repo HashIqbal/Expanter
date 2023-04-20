@@ -6,20 +6,20 @@ const FeaturesPage = () => {
   return (
     <React.Fragment>
       <section className={styles["features-container"]}>
-        <div className={styles["features-container-one"]}>
+        <div className={styles["features-container-brand"]}>
           <p className={styles["link-group"]}>
             &#60; Back to{" "}
             <Link to="/" className={styles["link-tag"]}>
               Home
             </Link>
           </p>
-          <div className={styles["main-body-one"]}>
+          <div className={styles["main-body-brand"]}>
             <div className={styles["heading-group"]}>
               <h2 className={styles["heading-primary"]}>
                 Our bussiness wants to expand to china
               </h2>
             </div>
-            <hr className={styles["line-small-one"]} />
+            <hr className={styles["line-small-brand"]} />
             <div>
               <div>
                 <p className={styles["heading-secondary"]}>Unlock china</p>
@@ -44,19 +44,19 @@ const FeaturesPage = () => {
               </div>
             </div>
             <div className={styles["link-box"]}>
-              <Link className={styles["link-tag-two"]} to="/create/brand">
+              <Link className={styles["link-tag-signup"]} to="/create/brand">
                 Signup
               </Link>
-              <Link className={styles["link-tag-three"]}>Login</Link>
+              <Link className={styles["link-tag-login"]}>Login</Link>
             </div>
           </div>
         </div>
-        <div className={styles["features-container-two"]}>
-          <div className={styles["main-body-two"]}>
+        <div className={styles["features-container-services"]}>
+          <div className={styles["main-body-services"]}>
             <h2 className={styles["heading-primary"]}>
               I provide services in China for business from overseas
             </h2>
-            <hr className={styles["line-small-two"]} />
+            <hr className={styles["line-small-services"]} />
             <div>
               <div>
                 <p className={styles["heading-secondary"]}>Unlock visibility</p>
@@ -84,10 +84,10 @@ const FeaturesPage = () => {
               </div>
             </div>
             <div className={styles["link-box"]}>
-              <Link className={styles["link-tag-two"]} to="/create/services">
+              <Link className={styles["link-tag-signup"]} to="/create/services">
                 Signup
               </Link>
-              <Link className={styles["link-tag-three"]}>Login</Link>
+              <Link className={styles["link-tag-login"]}>Login</Link>
             </div>
           </div>
         </div>
