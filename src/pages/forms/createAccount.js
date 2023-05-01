@@ -42,18 +42,35 @@ const CreateAccount = () => {
   const [formErrors, setFormErrors] = useState({});
 
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-  };
 
+    if (
+      errors.passwordIndicator === false &&
+      errors.emailIndicator === false &&
+      errors.firstNameIndicator === false &&
+      errors.lastNameIndicator === false &&
+      errors.businessNameIndicator === false
+    ) {
+      const response = await fetch(
+        "http://15.206.121.23:7077/v1/auth/email/registration/brand",
+        {
+          method: "POST",
+          body: JSON.stringify(formValues),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+  };
+  const errors = {};
   const validate = (values) => {
-    const errors = {};
     const regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
     if (
       !values.firstName ||
@@ -287,8 +304,8 @@ const CreateAccount = () => {
             <Link className={styles["ques-text"]}>
               Already have an Expanter account?
             </Link>
-            <Link to="/create/i" className={styles["btn-two"]}>
-              Create account
+            <Link to="/login" className={styles["btn-two"]}>
+              Login
             </Link>
           </div>
         </div>
