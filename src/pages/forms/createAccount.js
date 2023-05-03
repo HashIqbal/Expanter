@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./createAccount.module.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import baseUrl from "../../url/environment";
 const CreateAccount = () => {
   const [showPass, setShowPass] = useState(true);
   const [radioMarked, setRadioMarked] = useState();
@@ -58,7 +59,7 @@ const CreateAccount = () => {
       errors.businessNameIndicator === false
     ) {
       const response = await fetch(
-        "http://15.206.121.23:7077/v1/auth/email/registration/brand",
+        `${baseUrl}/v1/auth/email/registration/brand`,
         {
           method: "POST",
           body: JSON.stringify(formValues),
@@ -67,6 +68,7 @@ const CreateAccount = () => {
           },
         }
       );
+      console.log(response);
     }
   };
   const errors = {};

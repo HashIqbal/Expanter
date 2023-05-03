@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "./login.module.css";
 import { Link } from "react-router-dom";
+import baseUrl from "../../url/environment";
 
 const Login = () => {
   const initialValue = {
@@ -30,16 +31,14 @@ const Login = () => {
     setFormErrors(validate(formValues));
 
     if (errors.emailIndicator === false && errors.passwordIndicator === false) {
-      const response = await fetch(
-        "http://15.206.121.23:7077/v1/auth/email/login",
-        {
-          method: "POST",
-          body: JSON.stringify(formValues),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${baseUrl}/v1/auth/email/login`, {
+        method: "POST",
+        body: JSON.stringify(formValues),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response);
     }
   };
 
