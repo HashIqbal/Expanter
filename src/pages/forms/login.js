@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styles from "./login.module.css";
 import { Link } from "react-router-dom";
-import baseUrl from "../../url/environment";
+import baseUrl from "../../configs/environment";
 
 const Login = () => {
   const initialValue = {
@@ -13,6 +13,8 @@ const Login = () => {
   const [formValues, setFormValues] = useState(initialValue);
   const [showPass, setShowPass] = useState();
   const [formErrors, setFormErrors] = useState({});
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState();
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -31,14 +33,18 @@ const Login = () => {
     setFormErrors(validate(formValues));
 
     if (errors.emailIndicator === false && errors.passwordIndicator === false) {
-      const response = await fetch(`${baseUrl}/v1/auth/email/login`, {
+      const response = await fetch(`${baseUrl}/auth/email/login`, {
         method: "POST",
         body: JSON.stringify(formValues),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      console.log(response);
+      if (!response.ok) {
+        setError("something went wrong");
+        return;
+      }
+      setSuccess("You are logged in");
     }
   };
 
@@ -65,6 +71,14 @@ const Login = () => {
 
     return errors;
   };
+
+  if (error) {
+    return <p className={styles["error-text"]}>{error}</p>;
+  }
+
+  if (success) {
+    return <p className={styles["success-text"]}>{success}</p>;
+  }
 
   return (
     <React.Fragment>

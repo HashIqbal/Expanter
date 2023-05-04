@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./createAccount.module.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import baseUrl from "../../url/environment";
+import baseUrl from "../../configs/environment";
 const CreateAccount = () => {
   const [showPass, setShowPass] = useState(true);
   const [radioMarked, setRadioMarked] = useState();
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState();
   const params = useParams();
 
   useEffect(() => {
@@ -58,19 +60,23 @@ const CreateAccount = () => {
       errors.lastNameIndicator === false &&
       errors.businessNameIndicator === false
     ) {
-      const response = await fetch(
-        `${baseUrl}/v1/auth/email/registration/brand`,
-        {
-          method: "POST",
-          body: JSON.stringify(formValues),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${baseUrl}/auth/email/registration/brand`, {
+        method: "POST",
+        body: JSON.stringify(formValues),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       console.log(response);
+      if (!response.ok) {
+        setError("Something went wrong");
+        return;
+      }
+
+      setSuccess("Your account is created");
     }
   };
+
   const errors = {};
   const validate = (values) => {
     const regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
@@ -123,6 +129,14 @@ const CreateAccount = () => {
 
     return errors;
   };
+
+  if (error) {
+    return <p className={styles["error-text"]}>{error}</p>;
+  }
+
+  if (success) {
+    return <p className={styles["success-text"]}>{success}</p>;
+  }
 
   return (
     <React.Fragment>
