@@ -7,6 +7,7 @@ import useHttp from "../../HTTP/errorResponse";
 import { ReactFromModule } from "mymodule";
 
 const Login = () => {
+  const { fetchData, errorMsg, successMsg } = useHttp();
   const initialValue = {
     email: "",
     password: "",
@@ -16,7 +17,6 @@ const Login = () => {
   const [showPass, setShowPass] = useState();
   const [formErrors, setFormErrors] = useState({});
   const [error, setError] = useState();
-  const [success, setSuccess] = useState();
   const [errorFourHund, setErrorFourHund] = useState();
 
   const onChangeHandler = (e) => {
@@ -35,27 +35,8 @@ const Login = () => {
     e.preventDefault();
     setFormErrors(validate(formValues));
 
-    // const { fetchData } = useHttp();
     if (errors.emailIndicator === false && errors.passwordIndicator === false) {
-      console.log("hi");
-      console.log(React === ReactFromModule); //false
-
-      // fetchData(formValues, "POST", "auth/email/login");
-      // const response = await fetch(`${baseUrl}/auth/email/login`, {
-      //   method: "POST",
-      //   body: JSON.stringify(formValues),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-      // console.log(response);
-      // if (response.status === 400) {
-      //   setError("something went wrong");
-      //   return;
-      // }
-      // setSuccess("You are logged in");
-      // // setErrorFourHund(error400);
-      // console.log(errorFourHund);
+      fetchData(formValues, "POST", "auth/email/login");
     }
   };
 
@@ -83,12 +64,12 @@ const Login = () => {
     return errors;
   };
 
-  // if (errorFourHund) {
-  // return <p className={styles["error-text"]}>{errorFourHund}</p>;
-  // }
+  if (successMsg) {
+    return <p className={styles["success-text"]}>{successMsg}</p>;
+  }
 
-  if (success) {
-    return <p className={styles["success-text"]}>{success}</p>;
+  if (errorMsg) {
+    return <p className={styles["error-text"]}>{errorMsg}</p>;
   }
 
   return (

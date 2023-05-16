@@ -3,7 +3,9 @@ import styles from "./createAccount.module.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import baseUrl from "../../configs/environment";
+import useHttp from "../../HTTP/errorResponse";
 const CreateAccount = () => {
+  const { fetchData, errorMsg, successMsg } = useHttp();
   const [showPass, setShowPass] = useState(true);
   const [radioMarked, setRadioMarked] = useState();
   const [error, setError] = useState();
@@ -60,20 +62,7 @@ const CreateAccount = () => {
       errors.lastNameIndicator === false &&
       errors.businessNameIndicator === false
     ) {
-      const response = await fetch(`${baseUrl}/auth/email/registration/brand`, {
-        method: "POST",
-        body: JSON.stringify(formValues),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log(response);
-      if (!response.ok) {
-        setError("Something went wrong");
-        return;
-      }
-
-      setSuccess("Your account is created");
+      fetchData(formValues, "POST", "auth/email/registration/brand");
     }
   };
 
@@ -130,12 +119,12 @@ const CreateAccount = () => {
     return errors;
   };
 
-  if (error) {
-    return <p className={styles["error-text"]}>{error}</p>;
+  if (errorMsg) {
+    return <p className={styles["error-text"]}>{errorMsg}</p>;
   }
 
-  if (success) {
-    return <p className={styles["success-text"]}>{success}</p>;
+  if (successMsg) {
+    return <p className={styles["success-text"]}>{successMsg}</p>;
   }
 
   return (
