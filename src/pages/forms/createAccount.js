@@ -2,9 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./createAccount.module.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import baseUrl from "../../configs/environment";
+import useHttp from "../../HTTP/errorResponse";
 const CreateAccount = () => {
+  const { fetchData, errorMsg, successMsg } = useHttp();
   const [showPass, setShowPass] = useState(true);
   const [radioMarked, setRadioMarked] = useState();
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState();
   const params = useParams();
 
   useEffect(() => {
@@ -42,18 +47,27 @@ const CreateAccount = () => {
   const [formErrors, setFormErrors] = useState({});
 
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+
+    if (
+      errors.passwordIndicator === false &&
+      errors.emailIndicator === false &&
+      errors.firstNameIndicator === false &&
+      errors.lastNameIndicator === false &&
+      errors.businessNameIndicator === false
+    ) {
+      fetchData(formValues, "POST", "auth/email/registration/brand");
+    }
   };
 
+  const errors = {};
   const validate = (values) => {
-    const errors = {};
     const regExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
     if (
       !values.firstName ||
@@ -104,6 +118,14 @@ const CreateAccount = () => {
 
     return errors;
   };
+
+  if (errorMsg) {
+    return <p className={styles["error-text"]}>{errorMsg}</p>;
+  }
+
+  if (successMsg) {
+    return <p className={styles["success-text"]}>{successMsg}</p>;
+  }
 
   return (
     <React.Fragment>
@@ -287,8 +309,8 @@ const CreateAccount = () => {
             <Link className={styles["ques-text"]}>
               Already have an Expanter account?
             </Link>
-            <Link to="/create/i" className={styles["btn-two"]}>
-              Create account
+            <Link to="/login" className={styles["btn-two"]}>
+              Login
             </Link>
           </div>
         </div>
