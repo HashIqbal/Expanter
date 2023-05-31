@@ -34,6 +34,7 @@ const Login = () => {
   const useSubmitHandler = async (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
+    // console.log('hello')
 
     if (errors.emailIndicator === false && errors.passwordIndicator === false) {
       fetchData(formValues, "POST", "auth/email/login");
